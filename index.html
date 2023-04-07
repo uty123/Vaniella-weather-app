@@ -10,7 +10,7 @@
       integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
       crossorigin="anonymous"
     />
-
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <title>Vaniella weather app</title>
     <link rel="stylesheet" href="src/style.css" />
   </head>
@@ -21,10 +21,13 @@
           <!--Now making a grid of 2 cols -->
           <div class="row">
             <div class="col-6">
-              <h1>San Francisco</h1>
+              <h1 id="city"></h1>
               <ul>
-                <li>Saturday 16:02, <span>Clear</span></li>
-                <li>Humidity: 73%, <span> Wind: 1.54km/h</span></li>
+                <li>Saturday 16:02, <span id="weather-description"></span></li>
+                <li>
+                  Humidity: <span id="humidity-element"> </span>%,
+                  <span> Wind: <span id="wind-element"> </span>km/h</span>
+                </li>
               </ul>
             </div>
 
@@ -34,7 +37,7 @@
                 alt="cloud"
                 class="cloud-icon"
               />
-              <span class="temperature"> 12 </span>
+              <span class="temperature" id="temp-monday"> </span>
               <span class="unit"> °C</span>
             </div>
           </div>
