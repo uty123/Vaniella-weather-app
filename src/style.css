@@ -46,5 +46,13 @@ li:first-letter {
   margin-left: -5px;
 }
 .cloud-icon {
-  line-height: 1;
+  margin-bottom: 50px;
+  margin-left: 40px;
+}
+.img-icon {
+  margin-left: -26px;
+}
+.daily-temp {
+  font-weight: 500;
+  color: black;
 }
