@@ -13,6 +13,8 @@ li {
   line-height: 20px;
   list-style: none;
   margin-left: -32px;
+}
+li:first-letter {
   text-transform: capitalize;
 }
 .weather-app-wrapper {
