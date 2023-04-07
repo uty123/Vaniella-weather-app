@@ -1,0 +1,47 @@
+h1 {
+  color: #272142;
+  font-size: 38px;
+  font-weight: 700;
+  margin-right: -80px;
+  line-height: 48px;
+  margin: ;
+}
+ul {
+  color: rgba(39, 33, 66, 0.4);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  list-style: none;
+  margin-left: -32px;
+}
+.weather-app-wrapper {
+  max-width: 600px;
+  margin: 55px auto;
+}
+.boarder {
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.temperature {
+  color: #212121;
+  font-size: 80px;
+  font-weight: 700;
+  line-height: 1;
+}
+.temp-components {
+  margin-left: ;
+  align-items: center;
+}
+.temp-components .unit {
+  color: #212121;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1;
+  position: relative;
+  top: -34px;
+  margin-left: -25px;
+}
+.cloud-icon {
+  line-height: 1;
+}
