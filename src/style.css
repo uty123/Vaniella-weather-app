@@ -31,6 +31,7 @@ li:first-letter {
   font-size: 80px;
   font-weight: 700;
   line-height: 1;
+  margin-left: -20px;
 }
 .temp-components {
   margin-left: ;
@@ -47,7 +48,7 @@ li:first-letter {
 }
 .cloud-icon {
   margin-bottom: 50px;
-  margin-left: 40px;
+  margin-left: 10px;
 }
 .img-icon {
   margin-left: -26px;
@@ -58,4 +59,12 @@ li:first-letter {
 }
 .second-grid {
   margin-top: 30px;
+}
+.temp-components .active {
+  color: #212121;
+  text-decoration: none;
+  cursor: default;
+}
+.temp-components .fahr-link {
+  text-decoration: none;
 }

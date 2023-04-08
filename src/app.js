@@ -23,7 +23,6 @@ function formateDate(timestamp) {
 }
 
 function displayWeatherForecast(response) {
-  console.log(response.data);
   let temperatureElementMonday = document.querySelector("#temp-monday");
   let cityElement = document.querySelector("#city");
   let weatherDescription = document.querySelector("#weather-description");
@@ -91,6 +90,8 @@ function displayWeatherForecast(response) {
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.daily[6].condition.icon}.png`
   );
 
+  celsiusTemperature = response.data.daily[1].temperature.day;
+
   dateElement.innerHTML = formateDate(response.data.daily[1].time * 1000);
   windElement.innerHTML = Math.round(response.data.daily[1].wind.speed);
   humidityElement.innerHTML = Math.round(
@@ -98,9 +99,7 @@ function displayWeatherForecast(response) {
   );
   weatherDescription.innerHTML = response.data.daily[1].condition.description;
   cityElement.innerHTML = response.data.city;
-  temperatureElementMonday.innerHTML = Math.round(
-    response.data.daily[1].temperature.day
-  );
+  temperatureElementMonday.innerHTML = Math.round(celsiusTemperature);
 }
 
 function search(city) {
@@ -116,6 +115,35 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 
-search("Lagos");
+function displayFahrenheitTemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temp-monday");
+  //remove the active class from celcius link and add to fahrenheit when clicked
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
+
+  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
+}
+
+function displayCelsiusTemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temp-monday");
+  //remove the active class from fahrein link and add to celcius when clicked
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature = null;
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+let fahrenheitLink = document.querySelector("#fahr-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
+
+let celsiusLink = document.querySelector("#cel-link");
+celsiusLink.addEventListener("click", displayCelsiusTemp);
+
+search("Lagos");
