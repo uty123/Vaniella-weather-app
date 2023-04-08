@@ -103,9 +103,19 @@ function displayWeatherForecast(response) {
   );
 }
 
-apiKey = "d0aaf35fd7f0bc76394a85b20o4aeft8";
-query = "Tokyo";
-apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${query}&key=${apiKey}&units=metric`;
-//console.log(apiUrl);
+function search(city) {
+  apiKey = "d0aaf35fd7f0bc76394a85b20o4aeft8";
 
-axios.get(apiUrl).then(displayWeatherForecast);
+  apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayWeatherForecast);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
+
+search("Lagos");
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
