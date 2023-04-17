@@ -21,7 +21,8 @@ function formateDate(timestamp) {
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
 }
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast-section");
 
   let forecastHTML = `<div class="row">`;
@@ -51,6 +52,15 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
+function getForecast(coordinates) {
+  // console.log(coordinates);
+
+  let apiKey = "d0aaf35fd7f0bc76394a85b20o4aeft8";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&key=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function displayWeather(response) {
   console.log(response.data);
   let temperatureElementMonday = document.querySelector("#temp-monday");
@@ -76,6 +86,7 @@ function displayWeather(response) {
   weatherDescription.innerHTML = response.data.condition.description;
   cityElement.innerHTML = response.data.city;
   temperatureElementMonday.innerHTML = Math.round(celsiusTemperature);
+  getForecast(response.data.coordinates);
 }
 
 function search(city) {
@@ -124,4 +135,3 @@ let celsiusLink = document.querySelector("#cel-link");
 celsiusLink.addEventListener("click", displayCelsiusTemp);
 
 search("Lagos");
-displayForecast();
