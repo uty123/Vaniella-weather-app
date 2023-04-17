@@ -52,9 +52,11 @@ li:first-letter {
 }
 .img-icon {
   margin-left: -26px;
+  width: 90px;
 }
 .daily-temp {
   font-weight: 500;
+  font-size: 16px;
   color: black;
 }
 .second-grid {
@@ -67,4 +69,8 @@ li:first-letter {
 }
 .temp-components .fahr-link {
   text-decoration: none;
+}
+.forecast-section {
+  margin-top: 20px;
+  text-align: center;
 }
