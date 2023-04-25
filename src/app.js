@@ -75,12 +75,11 @@ function getForecast(coordinates) {
 
   let apiKey = "d0aaf35fd7f0bc76394a85b20o4aeft8";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&key=${apiKey}&units=metric`;
-  console.log(apiUrl);
+
   axios.get(apiUrl).then(displayForecast);
 }
 
 function displayWeather(response) {
-  console.log(response.data);
   let temperatureElementMonday = document.querySelector("#temp-monday");
   let cityElement = document.querySelector("#city");
   let weatherDescription = document.querySelector("#weather-description");
@@ -111,7 +110,7 @@ function search(city) {
   apiKey = "d0aaf35fd7f0bc76394a85b20o4aeft8";
 
   apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-  console.log(apiUrl);
+
   axios.get(apiUrl).then(displayWeather);
 }
 
@@ -121,35 +120,7 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 
-function displayFahrenheitTemp(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temp-monday");
-  //remove the active class from celcius link and add to fahrenheit when clicked
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
-
-  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
-}
-
-function displayCelsiusTemp(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temp-monday");
-  //remove the active class from fahrein link and add to celcius when clicked
-  fahrenheitLink.classList.remove("active");
-  celsiusLink.classList.add("active");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-}
-
-let celsiusTemperature = null;
-
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
-
-let fahrenheitLink = document.querySelector("#fahr-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
-
-let celsiusLink = document.querySelector("#cel-link");
-celsiusLink.addEventListener("click", displayCelsiusTemp);
 
 search("Lagos");
